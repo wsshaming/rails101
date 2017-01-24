@@ -11,7 +11,6 @@ before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
      end
 
    def edit
-     find_group_and_check_permission
    end
 
     def new
@@ -30,7 +29,6 @@ before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
 end
 
    def update
-     find_group_and_check_permission
 
 
      if @group.update(group_params)
@@ -41,7 +39,7 @@ end
   end
 
    def destroy
-     find_group_and_check_permission
+  
 
      @group.destroy
      redirect_to groups_path, alert: "Group deleted"
