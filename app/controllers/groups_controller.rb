@@ -22,12 +22,13 @@ before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
    def create
   @group = Group.new(group_params)
   @group.user = current_user
-
   if @group.save
+    current_user.join!(@group)
     redirect_to groups_path
   else
     render :new
   end
+  
 end
 
    def update
